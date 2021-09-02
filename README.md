@@ -1,1 +1,1 @@
-# quickerstaging
+# quicker staging
