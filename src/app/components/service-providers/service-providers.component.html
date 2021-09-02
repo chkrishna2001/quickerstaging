@@ -1,0 +1,59 @@
+<div class="card" *ngIf="areProvidersLoading">
+  <p-progressSpinner></p-progressSpinner>
+
+</div>
+
+<div class="card" *ngIf="!areProvidersLoading && (!providers || providers.length == 0)">
+  No providers found for {{healthService?.attributes?.name}}
+</div>
+<div class="card" *ngIf="!areProvidersLoading && providers && providers.length > 0">
+  <div class="card-header">
+    <h5>Providers for {{healthService?.attributes?.name}}</h5>
+  </div>
+  <p-tabView>
+    <p-tabPanel header="Basic">
+      <p-table [value]="providers" dataKey="id">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-provider>
+          <tr>
+            <td>{{provider.id}}</td>
+            <td>{{provider.attributes.name}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-tabPanel>
+    <p-tabPanel header="Enhanced">
+      <div class="card mb-3" *ngFor="let provider of providers">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <svg class="bd-placeholder-img img-thumbnail" *ngIf="!provider.attributes['card-image']" width="150"
+              height="200" xmlns="http://www.w3.org/2000/svg" role="img"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>{{provider.attributes.name}} has no picture</title>
+              <rect width="100%" height="100%" fill="#868e96"></rect>
+              <text x="30%" y="50%" fill="#dee2e6" dy=".3em">No
+                Picture</text>
+            </svg>
+            <img *ngIf="provider.attributes['card-image']" [src]="provider.attributes['card-image']"
+              class="rounded img-fluid img-thumbnail" alt="{{provider.attributes.name}}" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{provider.attributes.name}}</h5>
+              <p class="card-text"> {{provider.attributes.subspecialties}}</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-tabPanel>
+
+  </p-tabView>
+
+
+</div>

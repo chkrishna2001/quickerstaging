@@ -1,0 +1,21 @@
+
+<div class="card mb-5">
+  <div class="card-header">
+    <h5>Health services</h5>
+  </div>
+  
+  <p-table [value]="services" selectionMode="single" [(selection)]="selectedService" dataKey="id" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Id</th>
+              <th>Name</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-healthService>
+          <tr [pSelectableRow]="healthService">
+              <td>{{healthService.id}}</td>
+              <td>{{healthService.attributes.name}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
