@@ -14,19 +14,21 @@ Install the Angular CLI globally:
 npm install -g @angular/cli
 ```
 
-Clone project:
+#### Clone project:
 
 ```
 git clone [Project Url]
 ```
 
-install dependencies and run the application:
+#### install dependencies and run the application:
 
 ```
 cd [PROJECT NAME]
 npm install
 ng serve
-
-Open browser and pase below url
+```
+#### open below url in browser
 ```
 http://localhost:4200/home
+
+```
